@@ -1,0 +1,36 @@
+# Theme matching waybar (Nord/Tokyo Night inspired)
+background-color=#282c3af5
+text-color=#e5e9f0
+border-color=#7aa2f7
+border-size=2
+border-radius=8
+
+# Layout
+width=380
+height=100
+margin=12
+padding=14
+max-visible=4
+layer=overlay
+anchor=top-right
+
+# Typography
+font=DejaVuSansMono 11
+
+# Behavior
+default-timeout=5000
+ignore-timeout=0
+
+# Urgency styles
+[urgency=low]
+border-color=#a9b1d6
+background-color=#20242ef5
+
+[urgency=normal]
+border-color=#7aa2f7
+background-color=#282c3af5
+
+[urgency=critical]
+border-color=#f7768e
+background-color=#3c425af5
+default-timeout=0
