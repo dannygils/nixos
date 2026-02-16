@@ -33,7 +33,6 @@
 
     # ---------- Development ----------
     git
-    go
     python312
     python312Packages.pip
     python312Packages.pillow

@@ -55,10 +55,11 @@
       ############################
       # Aliases - System management
       ############################
-      alias rebuild='sudo nixos-rebuild switch'
-      alias update='sudo nixos-rebuild switch --upgrade'
+      alias rebuild='NIX_PATH=/home/dan/.config/nixos/configuration.nix && sudo nixos-rebuild switch'
+      alias update='NIX_PATH=/home/dan/.config/nixos/configuration.nix && sudo nixos-rebuild switch --upgrade'
       alias garbage='sudo nix-collect-garbage -d'
-      alias generations='nix-env --list-generations'
+      alias user-generations='nix-env --list-generations'
+      alias sys-generations='nixos-rebuild list-generations'
 
       ############################
       # Aliases - Wayland/Hyprland
