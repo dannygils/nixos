@@ -28,6 +28,8 @@
     pay-respects
     sshpass
     xbindkeys
+    bmon
+    btop
 
     # ---------- Development ----------
     git

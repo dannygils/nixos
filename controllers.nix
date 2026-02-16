@@ -15,3 +15,4 @@
     # Prevent DualSense touchpad from acting like a laptop touchpad
     SUBSYSTEM=="input", ATTRS{name}=="Sony Interactive Entertainment DualSense Wireless Controller Touchpad", ENV{ID_INPUT_TOUCHPAD}="", ENV{ID_INPUT_MOUSE}="", ENV{LIBINPUT_IGNORE_DEVICE}="1"
   '';
+}
