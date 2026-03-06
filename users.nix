@@ -13,6 +13,8 @@
       "networkmanager"  # Network management
       "wheel"           # Sudo access
   #   "docker"          # Docker access (virtualisation.docker.enable in programs.nix)
+      "dialout"
+      "uucp"
     ];
     
     # Per-user packages (optional)
