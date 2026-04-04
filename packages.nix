@@ -30,15 +30,20 @@
     xbindkeys
     bmon
     btop
+    dig
 
     # ---------- Development ----------
     git
-    python312
-    python312Packages.pip
-    python312Packages.pillow
+    (python312.withPackages (ps: with ps; [
+      pip
+      pillow
+    ]))
     vscode
     openvscode-server
-
+    uv
+    python313
+    nodejs_24
+    
     # ---------- Database ----------
     sqlcipher
     sqlite
@@ -53,12 +58,15 @@
     ffmpegthumbnailer
     imagemagick
     playerctl
+    adwaita-icon-theme
+    ffmpeg
 
     # ---------- GUI Applications - Productivity ----------
     gnome-text-editor
     keepassxc
     obsidian
     typst
+    obs-studio
 
     # ---------- GUI Applications - Graphics ----------
     graphicsmagick
@@ -71,7 +79,6 @@
 
     # ---------- GUI Applications - Communication ----------
     signal-desktop
-    zoom-us
 
     # ---------- GUI Applications - Utilities ----------
     p7zip
