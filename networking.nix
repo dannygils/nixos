@@ -26,6 +26,7 @@
     127.0.0.1 nixos.local nixos localhost
     ::1       nixos.local nixos localhost
     192.168.1.69 tower.local
+    192.168.1.195 homeassistant.local
   '';
 
 }

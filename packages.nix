@@ -1,4 +1,5 @@
-# packages.nix: Global environment.systemPackages
+# packages.nix
+
 { config, pkgs, lib, ... }:
 
 {
@@ -6,95 +7,69 @@
   # System Packages
   ############################
   environment.systemPackages = with pkgs; [
-    
-    # ---------- CLI Tools - Core ----------
+    adwaita-icon-theme
+    alacritty
+    android-tools
     bat
+    bmon
+    bottles
+    btop
+    cron
+    dig
     eza
     fastfetch
+    ffmpeg
+    ffmpegthumbnailer
     file
-    hyfetch
-    net-tools
-    pciutils
-    ripgrep
-    socat
-    usbutils
-    vim
-    wget
-    zoxide
-
-    # ---------- CLI Tools - System ----------
-    cron
-    ntfs3g
-    pay-respects
-    sshpass
-    xbindkeys
-    bmon
-    btop
-    dig
-
-    # ---------- Development ----------
+    gamemode
     git
+    gnome-text-editor
+    graphicsmagick
+    hyfetch
+    imagemagick
+    keepassxc
+    mpv
+    net-tools
+    nodejs_24
+    ntfs3g
+    obs-studio
+    obsidian
+    openvscode-server
+    p7zip
+    pay-respects
+    pciutils
+    pinta
+    playerctl
+    plex-desktop
+    protontricks
+    protonup-ng
     (python312.withPackages (ps: with ps; [
       pip
       pillow
     ]))
-    vscode
-    openvscode-server
-    uv
     python313
-    nodejs_24
-    
-    # ---------- Database ----------
+    ripgrep
+    scanmem
+    scrcpy
+    signal-desktop
+    socat
     sqlcipher
     sqlite
-
-    # ---------- Terminals ----------
-    alacritty
-    warp-terminal
-
-    # ---------- Wayland/Desktop Environment ----------
-    wayland
-    xdg-desktop-portal-gtk
-    ffmpegthumbnailer
-    imagemagick
-    playerctl
-    adwaita-icon-theme
-    ffmpeg
-
-    # ---------- GUI Applications - Productivity ----------
-    gnome-text-editor
-    keepassxc
-    obsidian
+    sshpass
     typst
-    obs-studio
-
-    # ---------- GUI Applications - Graphics ----------
-    graphicsmagick
-    pinta
-
-    # ---------- GUI Applications - Media ----------
-    mpv
-    plex-desktop
+    usbutils
+    uv
+    vim
     vlc
-
-    # ---------- GUI Applications - Communication ----------
-    signal-desktop
-
-    # ---------- GUI Applications - Utilities ----------
-    p7zip
-    xarchiver
-
-    # ---------- Gaming - Emulation/Tools ----------
-    bottles
-    gamemode
-    protontricks
-    protonup-ng  # Swapped out protonup-qt (insecure as of 2025-12-25 / 25.11)
-    scanmem
+    vscode
+    warp-terminal
+    wayland
+    wget
     wine
     winetricks
-
-    # ---------- Android ----------
-    android-tools
-    scrcpy
+    xarchiver
+    xbindkeys
+    xdg-desktop-portal-gtk
+    zoxide
   ];
 }

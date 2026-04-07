@@ -6,39 +6,23 @@
   # Imports
   ############################
   imports = [
-    # --- Core ---
-    ./hardware-configuration.nix
-    ./networking.nix
-
-    # --- Desktop Environment ---
-    ./hyprland.nix   
-
-    # --- Hardware ---
-    ./nvidia.nix
     ./audio.nix
-    ./controllers.nix
-
-    # --- System Services ---
-    ./services.nix
-    ./programs.nix
-
-    # --- User Configuration ---
-    ./users.nix
-
-    # --- Shell ---
-    ./zsh.nix
-
-    # --- Packages & Applications ---
-    ./packages.nix
-    ./fonts.nix
-    ./nautilus.nix
-
-    # --- Security ---
-    ./yubikey.nix
-    ./opensnitch.nix
-    ./keyring.nix
     ./certs.nix
-
+    ./controllers.nix
+    ./fonts.nix
+    ./hardware-configuration.nix
+    ./hyprland.nix
+    ./keyring.nix
+    ./nautilus.nix
+    ./networking.nix
+    ./nvidia.nix
+    ./opensnitch.nix
+    ./packages.nix
+    ./programs.nix
+    ./services.nix
+    ./users.nix
+    ./yubikey.nix
+    ./zsh.nix
   ];
 
   ############################

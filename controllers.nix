@@ -1,4 +1,5 @@
-# controllers.nix: Game controller firmware, udev rules, and Steam Input setup
+# controllers.nix
+
 { config, pkgs, ... }:
 
 {

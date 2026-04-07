@@ -1,4 +1,5 @@
-# nvidia.nix: NVIDIA driver, modesetting, and 32-bit graphics settings
+# nvidia.nix
+
 { config, pkgs, lib, ... }:
 {
   ############################
@@ -14,12 +15,12 @@
     powerManagement.enable = false;
     nvidiaSettings         = true;
     package                = config.boot.kernelPackages.nvidiaPackages.latest;
-    open                   = false;  # Required on NixOS 25.05+ with driver >= 560
+    open                   = false;
   };
 
   ############################
   # Graphics Support
   ############################
   hardware.graphics.enable      = true;
-  hardware.graphics.enable32Bit = true;  # Needed for 32-bit games/applications
+  hardware.graphics.enable32Bit = true;
 }

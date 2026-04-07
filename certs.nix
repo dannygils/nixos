@@ -1,4 +1,5 @@
-# certs.nix: Custom SSL/TLS certificate configuration
+# certs.nix
+
 { config, pkgs, ... }:
 
 {

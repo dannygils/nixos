@@ -1,4 +1,5 @@
-# desktop.nix: Hyprland-based Wayland desktop (WM, DM, portals, helpers)
+# hyprland.nix
+
 { config, pkgs, lib, ... }:
 {
   ############################
@@ -34,31 +35,17 @@
   # Hyprland-specific packages
   ############################
   environment.systemPackages = with pkgs; [
-    # --- Hyprland core utilities ---
     hyprlock
     hypridle
-    # hyprlauncher - undercooked right now
     hyprpaper
     hyprshot
-
-    # --- Wayland/XWayland helpers ---
     xwayland-satellite
-
-    # --- Launchers ---
     fuzzel
     wofi
-
-    # --- Notifications ---
     mako
-
-    # --- Status bar ---
     waybar
-
-    # --- File manager ---
     nautilus                      
     nautilus-open-any-terminal
-
-    # --- System/utilities ---
     glib
     image-roll
     lxqt.lxqt-policykit

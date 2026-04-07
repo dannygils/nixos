@@ -1,4 +1,5 @@
-# users.nix: User accounts and per-user package lists
+# users.nix
+
 { config, pkgs, lib, ... }:
 {
   ############################
@@ -12,7 +13,6 @@
     extraGroups  = [
       "networkmanager"  # Network management
       "wheel"           # Sudo access
-  #   "docker"          # Docker access (virtualisation.docker.enable in programs.nix)
       "dialout"
       "uucp"
     ];

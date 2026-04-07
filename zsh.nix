@@ -25,7 +25,7 @@
     ############################
     ohMyZsh = {
       enable = true;
-      theme = "";  # Leave empty to avoid theme-path issues
+      theme = "";
       plugins = [ "git" "z" ];
     };
 
@@ -72,9 +72,7 @@
       ############################
       # Prompt configuration
       ############################
-      # Make sure no old Bash-style PS1 bleeds through
-      # unset PS1 PROMPT RPROMPT
-
+      
       # Powerlevel10k (source directly from the Nix store)
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       [[ -r ~/.p10k.zsh ]] && source ~/.p10k.zsh

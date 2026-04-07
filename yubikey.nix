@@ -1,4 +1,5 @@
-# yubikey.nix: U2F/YubiKey PAM configuration and management tools
+# yubikey.nix
+
 { config, pkgs, ... }:
 
 {

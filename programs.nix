@@ -1,4 +1,4 @@
-# programs.nix: High-level programs and services
+# programs.nix
 
 { config, pkgs, lib, ... }:
 {

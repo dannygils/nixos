@@ -1,4 +1,5 @@
-# opensnitch.nix: OpenSnitch firewall service and UI package
+# opensnitch.nix
+
 { config, pkgs, ... }:
 
 {

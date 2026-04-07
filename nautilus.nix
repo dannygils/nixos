@@ -1,4 +1,5 @@
-# nautilus.nix: Nautilus file manager extensions and configuration
+# nautilus.nix
+
 { config, pkgs, ... }:
 
 {
@@ -13,9 +14,6 @@
   ############################
   # Extension Discovery
   ############################
-  # Make the nautilus-open-any-terminal Python extension discoverable by Nautilus
-  # by aggregating all packages' `share/nautilus-python/extensions` into the
-  # system profile under /run/current-system/sw/share/nautilus-python/extensions.
   environment.pathsToLink = [
     "/share/nautilus-python/extensions"
   ];

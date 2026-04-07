@@ -1,4 +1,5 @@
-# services.nix: Misc system services (printing, Avahi, optional SSH/firewall)
+# services.nix
+
 { config, pkgs, lib, ... }:
 {
   ############################
@@ -27,14 +28,7 @@
   ############################
   # Authorization
   ############################
-  # Enable system-wide PolicyKit (needed to authorize udisks2 actions)
+  # Enable system-wide PolicyKit
   security.polkit.enable = true;
 
-  ############################
-  # Optional Services
-  ############################
-  # Example firewall/SSH toggles:
-  # services.openssh.enable = true;
-  # networking.firewall.enable = true;
-  # networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 }

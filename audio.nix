@@ -1,13 +1,11 @@
-# audio.nix: PipeWire and audio stack configuration
+# audio.nix
+
 { config, pkgs, lib, ... }:
 {
   ############################
   # Audio System
   ############################
-  # Disable PulseAudio (using PipeWire instead)
   services.pulseaudio.enable = false;
-
-  # Enable realtime kit for audio processing
   security.rtkit.enable = true;
 
   ############################
