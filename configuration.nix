@@ -9,6 +9,7 @@
     ./audio.nix
     ./certs.nix
     ./controllers.nix
+    ./cleanup.nix
     ./fonts.nix
     ./hardware-configuration.nix
     ./hyprland.nix

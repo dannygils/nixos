@@ -50,4 +50,12 @@
     image-roll
     lxqt.lxqt-policykit
   ];
+
+############################
+# Hyprshot default directory
+############################
+environment.sessionVariables = {
+  HYPRSHOT_DIR = "/home/dan/Pictures/hyprshot";
+};
+
 }
