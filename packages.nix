@@ -35,7 +35,6 @@
     ntfs3g
     obs-studio
     obsidian
-    openvscode-server
     p7zip
     pay-respects
     pciutils
