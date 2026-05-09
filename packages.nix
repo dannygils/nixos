@@ -22,6 +22,7 @@
     ffmpegthumbnailer
     file
     gamemode
+    gamescope
     git
     gnome-text-editor
     graphicsmagick
