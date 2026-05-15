@@ -5,7 +5,7 @@
   ############################
   # Printing
   ############################
-  services.printing.enable = true;
+  services.printing.enable = false;
 
   ############################
   # Network Discovery
