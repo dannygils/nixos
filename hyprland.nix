@@ -28,7 +28,11 @@
   # Wayland plumbing & portals
   ############################
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-gtk  # keep this as fallback
+  ];
+  xdg.portal.config.common.default = "*";
   programs.xwayland.enable = true;
 
   ############################

@@ -16,6 +16,7 @@
     btop
     cron
     dig
+    element-desktop
     eza
     fastfetch
     ffmpeg
@@ -23,6 +24,7 @@
     file
     gamemode
     gamescope
+    gdal
     git
     gnome-text-editor
     graphicsmagick
@@ -33,11 +35,11 @@
     net-tools
     nodejs_24
     ntfs3g
-    obs-studio
     obsidian
     p7zip
     pay-respects
     pciutils
+    pdal
     pinta
     playerctl
     plex-desktop
@@ -47,6 +49,7 @@
       pip
       pillow
     ]))
+    pwvucontrol
     python313
     ripgrep
     scanmem
@@ -72,4 +75,23 @@
     xdg-desktop-portal-gtk
     zoxide
   ];
+
+  ############################
+  # OBS Studio
+  ############################
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-pipewire-audio-capture
+      obs-backgroundremoval
+    ];
+  };
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Virtual Camera" exclusive_caps=1
+  '';
 }
