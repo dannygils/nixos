@@ -33,6 +33,7 @@
     keepassxc
     mpv
     net-tools
+    nixd
     nodejs_24
     ntfs3g
     obsidian
