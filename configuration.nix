@@ -10,6 +10,7 @@
     ./certs.nix
     ./controllers.nix
     ./cleanup.nix
+    ./docker.nix
     ./fonts.nix
     ./hardware-configuration.nix
     ./hyprland.nix

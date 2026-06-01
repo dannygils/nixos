@@ -10,6 +10,7 @@
     adwaita-icon-theme
     alacritty
     android-tools
+    audacity
     bat
     bmon
     bottles
