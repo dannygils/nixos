@@ -1,6 +1,6 @@
 # nvidia.nix
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 {
   ############################
   # NVIDIA Video Driver

@@ -18,7 +18,7 @@
     ];
     
     # Per-user packages (optional)
-    packages = with pkgs; [
+    packages =   [
       # Optional: user-scoped packages; you can keep this empty.
       # thunderbird
     ];
