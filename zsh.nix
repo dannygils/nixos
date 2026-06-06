@@ -1,6 +1,6 @@
 # zsh.nix
 
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   ############################
   # Shell Configuration

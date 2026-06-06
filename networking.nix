@@ -1,5 +1,5 @@
 # networking.nix: Hostname, NetworkManager, DNS, and extra /etc/hosts entries
-{ config, pkgs, lib, ... }:
+{ ... }:
 {
   ############################
   # Hostname

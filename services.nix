@@ -1,6 +1,6 @@
 # services.nix
 
-{ config, pkgs, lib, ... }:
+{ ... }:
 {
   ############################
   # Printing

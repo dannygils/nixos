@@ -1,5 +1,5 @@
 # configuration.nix: Top-level NixOS config wiring all modules together
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   ############################

@@ -1,6 +1,6 @@
 # fonts.nix
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   ############################
   # Font Configuration

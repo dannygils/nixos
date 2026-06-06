@@ -1,6 +1,6 @@
 # llm.nix — Local LLM inference (Ollama + Open WebUI)
 
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 {
   ############################
   # Ollama (LLM Backend)

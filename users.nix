@@ -1,6 +1,6 @@
 # users.nix
 
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   ############################
   # User Accounts

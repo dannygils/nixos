@@ -1,6 +1,6 @@
 # docker.nix — Podman + NVIDIA container toolkit for GPU workloads
 
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   ############################
   # Podman (Rootless Containers)

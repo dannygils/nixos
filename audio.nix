@@ -1,6 +1,6 @@
 # audio.nix
 
-{ config, pkgs, lib, ... }:
+{ ... }:
 {
   ############################
   # Audio System

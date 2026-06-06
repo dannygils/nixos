@@ -1,6 +1,6 @@
 # hyprland.nix
 
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   ############################
   # Display server & login

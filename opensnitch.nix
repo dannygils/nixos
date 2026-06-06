@@ -1,6 +1,6 @@
 # opensnitch.nix
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   ############################

@@ -1,6 +1,6 @@
 # packages.nix
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   ############################

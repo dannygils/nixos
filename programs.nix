@@ -1,6 +1,6 @@
 # programs.nix
 
-{ config, pkgs, lib, ... }:
+{ ... }:
 {
   ############################
   # Desktop Applications
