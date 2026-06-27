@@ -16,6 +16,7 @@
     bottles
     btop
     cron
+    discord
     dig
     element-desktop
     eza
