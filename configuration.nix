@@ -23,6 +23,7 @@
     ./packages.nix
     ./programs.nix
     ./services.nix
+    ./streamdeck.nix
     ./users.nix
     ./yubikey.nix
     ./zsh.nix

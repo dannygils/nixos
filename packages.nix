@@ -1,8 +1,20 @@
 # packages.nix
-
 { config, pkgs, ... }:
-
 {
+  ############################
+  # Overlays
+  ############################
+  nixpkgs.overlays = [
+    (final: prev: {
+      streamcontroller = prev.streamcontroller.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          substituteInPlace $out/usr/lib/streamcontroller/src/backend/Store/StoreBackend.py \
+            --replace 'v = versions.get(gl.app_version, "main")' 'v = "main"'
+        '';
+      });
+    })
+  ];
+
   ############################
   # System Packages
   ############################
@@ -62,7 +74,10 @@
     sqlcipher
     sqlite
     sshpass
+    streamcontroller
+    streamdeck-ui
     typst
+    unrar
     usbutils
     uv
     vim
@@ -78,7 +93,6 @@
     xdg-desktop-portal-gtk
     zoxide
   ];
-
   ############################
   # OBS Studio
   ############################
@@ -89,7 +103,6 @@
       obs-backgroundremoval
     ];
   };
-
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];

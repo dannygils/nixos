@@ -32,8 +32,16 @@
   # Android Development
   ############################
   programs.adb.enable = true;
-  users.users.dan.extraGroups = [ "adbusers" "kvm" ];
+  users.users.dan.extraGroups = [ "adbusers" "kvm" "input" ];
   # services.udev.packages = [ pkgs.android-udev-rules ];  # Optional udev rules
+
+  ############################
+  # udev rule for streamcontroller
+  ############################
+  services.udev.extraRules = ''
+  KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess", GROUP="input", MODE="0660"
+'';
+
 
   ############################
   # Notes

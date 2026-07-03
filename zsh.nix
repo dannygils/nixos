@@ -60,7 +60,6 @@
       alias garbage='sudo nix-collect-garbage -d'
       alias user-generations='nix-env --list-generations'
       alias sys-generations='nixos-rebuild list-generations'
-      
       alias bios='sudo systemctl reboot --firmware'
 
       ############################
