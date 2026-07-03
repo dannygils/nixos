@@ -1,17 +1,10 @@
 # streamdeck.nix
-
 { pkgs, ... }:
 {
-  ############################
-  # Stream Deck udev Rules
-  ############################
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", TAG+="uaccess"
   '';
 
-  ############################
-  # Stream Deck UI - User Service
-  ############################
   systemd.user.services.streamdeck-ui = {
     description = "Stream Deck UI";
     wantedBy    = [ "graphical-session.target" ];
