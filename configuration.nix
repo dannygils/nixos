@@ -74,6 +74,7 @@
   # Nixpkgs Configuration
   ############################
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
 
   ############################
   # System State Version

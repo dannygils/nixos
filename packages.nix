@@ -92,6 +92,7 @@
     xbindkeys
     xdg-desktop-portal-gtk
     zoxide
+    zoom-us
   ];
   ############################
   # OBS Studio

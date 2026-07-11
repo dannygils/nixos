@@ -35,5 +35,6 @@
     NVD_BACKEND               = "direct";
     GBM_BACKEND               = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    LD_LIBRARY_PATH            = "/run/opengl-driver/lib";
   };
 }
