@@ -35,11 +35,14 @@
   # services.udev.packages = [ pkgs.android-udev-rules ];  # Optional udev rules
 
   ############################
-  # udev rule for streamcontroller
+  # udev rules
   ############################
   services.udev.extraRules = ''
-  KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess", GROUP="input", MODE="0660"
-'';
+    # streamcontroller
+    KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess", GROUP="input", MODE="0660"
+    # Neato XV-21 -> /dev/neato
+    SUBSYSTEM=="tty", ATTRS{idVendor}=="2108", ATTRS{idProduct}=="780b", SYMLINK+="neato", MODE="0660", GROUP="dialout"
+  '';
 
 
   ############################
