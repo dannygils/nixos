@@ -16,7 +16,7 @@
   ############################
   # Disable NM's dnsmasq handling; use custom DNS
   networking.networkmanager.dns = "none";
-  networking.networkmanager.insertNameservers = [ "192.168.1.2" ];
+  networking.networkmanager.insertNameservers = [ "192.168.1.53" ];
   networking.nameservers = [ "192.168.1.53" ];
 
   ############################

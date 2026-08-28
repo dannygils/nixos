@@ -15,7 +15,6 @@
     ./hardware-configuration.nix
     ./hyprland.nix
     ./keyring.nix
-    ./llm.nix
     ./nautilus.nix
     ./networking.nix
     ./nvidia.nix
@@ -61,6 +60,8 @@
     enable = true;
     type = "ibus";
   };
+  
+  documentation.doc.enable = false;
 
   ############################
   # AppImage Support
