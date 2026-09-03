@@ -1,8 +1,6 @@
 # packages.nix
 { config, pkgs, ... }:
-let
-  unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
-in
+
 {
 
 ############################
