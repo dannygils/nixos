@@ -10,7 +10,7 @@
     wantedBy = [ "graphical-session.target" ];
     partOf = [ "graphical-session.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.streamdeck-ui}/bin/streamdeck";
+      ExecStart = "${pkgs.streamdeck-ui}/bin/streamdeck -n";
       Restart = "on-failure";
     };
   };
