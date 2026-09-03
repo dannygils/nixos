@@ -20,8 +20,6 @@
   # ---------------------------------------------------------------------------
   system.autoUpgrade = {
     enable = true;
-    flake = "/home/dan/.config/nixos";
-    flags = [ "--update-input" "nixpkgs" "-L" ];
     dates = "04:00";
     randomizedDelaySec = "45min";
   };

@@ -4,19 +4,6 @@ let
   unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
 in
 {
-############################
-# Overlays
-############################
-nixpkgs.overlays = [
-    (final: prev: {
-streamcontroller = prev.streamcontroller.overrideAttrs (old: {
-postInstall = (old.postInstall or "") + ''
-          substituteInPlace $out/usr/lib/streamcontroller/src/backend/Store/StoreBackend.py \
-            --replace 'v = versions.get(gl.app_version, "main")' 'v = "main"'
-        '';
-      });
-    })
-  ];
 
 ############################
 # System Packages
@@ -74,17 +61,11 @@ python313
 ripgrep
 scanmem
 scrcpy
-    (unstable.signal-desktop.overrideAttrs (old: {
-postFixup = (old.postFixup or "") + ''
-        wrapProgram $out/bin/signal-desktop \
-          --add-flags "--password-store=gnome-libsecret"
-      '';
-    }))
+signal-desktop
 socat
 sqlcipher
 sqlite
 sshpass
-streamcontroller
 streamdeck-ui
 tigervnc
 typst
