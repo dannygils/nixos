@@ -24,6 +24,7 @@
     ./services.nix
     ./streamdeck.nix
     ./users.nix
+    ./virtualisation.nix
     ./yubikey.nix
     ./zsh.nix
   ];
@@ -60,7 +61,7 @@
     enable = true;
     type = "ibus";
   };
-  
+
   documentation.doc.enable = false;
 
   ############################
