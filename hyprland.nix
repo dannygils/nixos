@@ -1,12 +1,24 @@
 # hyprland.nix
 
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   ############################
   # Display server & login
   ############################
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
+
+  # Hide the uwsm-managed session from the login screen
+  services.displayManager.sessionPackages = lib.mkForce [
+    (pkgs.symlinkJoin {
+      name = "hyprland-session-no-uwsm";
+      paths = [ config.programs.hyprland.package ];
+      postBuild = ''
+        rm -f $out/share/wayland-sessions/hyprland-uwsm.desktop
+      '';
+      passthru.providedSessions = [ "hyprland" ];
+    })
+  ];
 
   ############################
   # Hyprland Wayland compositor
@@ -48,18 +60,17 @@
     wofi
     mako
     waybar
-    nautilus                      
+    nautilus
     nautilus-open-any-terminal
     glib
     image-roll
     lxqt.lxqt-policykit
   ];
 
-############################
-# Hyprshot default directory
-############################
-environment.sessionVariables = {
-  HYPRSHOT_DIR = "/home/dan/Pictures/hyprshot";
-};
-
+  ############################
+  # Hyprshot default directory
+  ############################
+  environment.sessionVariables = {
+    HYPRSHOT_DIR = "/home/dan/Pictures/hyprshot";
+  };
 }
