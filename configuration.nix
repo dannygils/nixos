@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
     ./hyprland.nix
     ./keyring.nix
+    ./printing.nix
     ./nautilus.nix
     ./networking.nix
     ./nvidia.nix

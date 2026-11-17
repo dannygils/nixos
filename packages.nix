@@ -20,6 +20,7 @@ discord
 dig
 element-desktop
 eza
+f3d
 fastfetch
 ffmpeg
 ffmpegthumbnailer
@@ -34,6 +35,7 @@ kdePackages.gwenview
 hyfetch
 imagemagick
 keepassxc
+libreoffice
 mpv
 net-tools
 nixd
