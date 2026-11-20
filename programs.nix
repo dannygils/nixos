@@ -19,30 +19,23 @@ programs.zoxide.enable  = true;
 programs.steam = {
 enable = true;
 remotePlay.openFirewall                = true;
-dedicatedServer.openFirewall           = true;
 localNetworkGameTransfers.openFirewall = true;
   };
 
-############################
-# Virtualization
-############################
-# virtualisation.docker.enable = true;
-
-############################
-# Android Development
-############################
-users.users.dan.extraGroups = [ "kvm" "input" ];
+programs.gamemode.enable  = true;
+programs.gamescope.enable = true;
 
 ############################
 # udev rules
 ############################
 services.udev.extraRules = ''
-    # streamcontroller
+    # uinput: lets streamdeck-ui and ydotool synthesise input events.
+    # TAG+="uaccess" ACLs the node to the logged-in user, so membership in the
+    # `input` group (which would expose every keyboard) is not needed.
     KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess", GROUP="input", MODE="0660"
     # Neato XV-21 -> /dev/neato
     SUBSYSTEM=="tty", ATTRS{idVendor}=="2108", ATTRS{idProduct}=="780b", SYMLINK+="neato", MODE="0660", GROUP="dialout"
   '';
-
 
 ############################
 # Notes

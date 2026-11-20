@@ -3,16 +3,14 @@
 { ... }:
 {
   ############################
-  # Printing
-  ############################
-
-  ############################
   # Network Discovery
   ############################
+  # nssmdns6 stays off: most mDNS responders publish A records only, so AAAA
+  # lookups for *.local just burn a timeout before falling back.
   services.avahi = {
     enable   = true;
     nssmdns4 = true;
-    nssmdns6 = true;
+    nssmdns6 = false;
   };
 
   ############################
@@ -27,7 +25,6 @@
   ############################
   # Authorization
   ############################
-  # Enable system-wide PolicyKit
-  security.polkit.enable = true;
+  # security.polkit.enable is turned on by programs.hyprland (see hyprland.nix)
 
 }

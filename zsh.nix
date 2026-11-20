@@ -5,7 +5,7 @@
   ############################
   # Shell Configuration
   ############################
-  environment.shells = [ pkgs.zsh ];
+  # programs.zsh already adds pkgs.zsh to environment.shells
   users.defaultUserShell = pkgs.zsh;
 
   ############################
@@ -18,15 +18,19 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
+    # Sets both HISTSIZE and SAVEHIST (default is 2000)
+    histSize = 10000;
+
     promptInit = "";
 
     ############################
     # Oh My Zsh
     ############################
+    # No "z" plugin: programs.zoxide already provides `z`
     ohMyZsh = {
       enable = true;
       theme = "";
-      plugins = [ "git" "z" ];
+      plugins = [ "git" ];
     };
 
     ############################
@@ -36,8 +40,6 @@
       ############################
       # History settings
       ############################
-      HISTFILESIZE=10000
-      HISTSIZE=500
       setopt HIST_IGNORE_ALL_DUPS
       setopt HIST_IGNORE_SPACE
       setopt SHARE_HISTORY
@@ -55,9 +57,11 @@
       ############################
       # Aliases - System management
       ############################
-      alias rebuild='NIX_PATH=/home/dan/.config/nixos/configuration.nix && sudo nixos-rebuild switch'
-      alias update='NIX_PATH=/home/dan/.config/nixos/configuration.nix && sudo nixos-rebuild switch --upgrade'
-      alias garbage='sudo nix-collect-garbage -d'
+      # /etc/nixos/configuration.nix is a symlink into ~/.config/nixos,
+      # so nixos-rebuild finds this config with no extra flags.
+      alias rebuild='sudo nixos-rebuild switch'
+      alias update='sudo nixos-rebuild switch --upgrade'
+      alias garbage='sudo nix-collect-garbage --delete-older-than 30d'
       alias user-generations='nix-env --list-generations'
       alias sys-generations='nixos-rebuild list-generations'
       alias tower='cd /run/user/1000/gvfs/sftp:host=192.168.1.69,user=root/mnt/user/'
@@ -74,7 +78,7 @@
       ############################
       # Prompt configuration
       ############################
-      
+
       # Powerlevel10k (source directly from the Nix store)
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       [[ -r ~/.p10k.zsh ]] && source ~/.p10k.zsh

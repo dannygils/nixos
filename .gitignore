@@ -1,2 +1,4 @@
 .vscode/
 nixos.code-workspace
+.claude
+.gitignore

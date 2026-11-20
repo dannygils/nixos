@@ -1,6 +1,12 @@
 # NixOS System Configuration
 
-This repo contains the full NixOS system configuration for a desktop workstation (x86_64, Intel CPU, NVIDIA GPU with 24 GB VRAM). It is deployed via `sudo nixos-rebuild switch --flake .` or `sudo nixos-rebuild switch` from `/home/dan/.config/nixos`.
+This repo contains the full NixOS system configuration for a desktop workstation (x86_64, Intel CPU, NVIDIA RTX 3090 Ti with 24 GB VRAM).
+
+**This is not a flake.** It is a channel-based config: `/etc/nixos/configuration.nix` is a
+symlink to `./configuration.nix` here, and Nix resolves the relative `./*.nix` imports against
+this directory. So `sudo nixos-rebuild switch` works from anywhere with no `--flake` and no
+`-I nixos-config=` flag. The NixOS release comes from root's `nixos` channel
+(`sudo nix-channel --list`), not from `system.stateVersion`.
 
 ## Repo structure
 
@@ -8,19 +14,36 @@ Each `.nix` file is a self-contained NixOS module imported by `configuration.nix
 
 - `configuration.nix` — top-level wiring: imports, bootloader, locale, nixpkgs settings
 - `hardware-configuration.nix` — **auto-generated, do not edit** (disks, kernel modules, CPU)
-- `nvidia.nix` — NVIDIA proprietary driver, modesetting, 32-bit graphics
+- `nvidia.nix` — NVIDIA proprietary driver, modesetting, 32-bit graphics, VA-API
 - `docker.nix` — Podman (rootless), nvidia-container-toolkit for GPU passthrough
-- `llm.nix` — Ollama (CUDA) + Open WebUI; both are manual-start (`systemctl start ollama`)
 - `packages.nix` — system-wide packages and OBS Studio config
-- `hyprland.nix` — Hyprland window manager
-- `networking.nix` — hostname, NetworkManager, firewall
+- `hyprland.nix` — SDDM, Hyprland, the `hyprland-session.target`, hyprlock/hypridle
+- `networking.nix` — hostname, NetworkManager, DNS, static hosts
 - `audio.nix` — PipeWire audio stack
-- `services.nix` — printing, Avahi, gvfs, udisks2, polkit
-- `programs.nix` — misc program enables (Firefox, Steam, etc.)
+- `services.nix` — Avahi, gvfs, udisks2
+- `printing.nix` — CUPS and the declared Brother printer
+- `programs.nix` — misc program enables (Firefox, Steam, gamemode) and udev rules
 - `zsh.nix` — Zsh shell config and plugins
-- `users.nix` — user accounts and groups
-- `cleanup.nix` — automatic Nix GC and store optimization
+- `users.nix` — user accounts; **all** of dan's group membership lives here
+- `cleanup.nix` — Nix GC/optimise, auto-upgrade, fstrim, smartd, fwupd, temp logging
+- `virtualisation.nix` — libvirtd + virt-manager
+- `streamdeck.nix` — streamdeck-ui and its user service
 - Other: `certs.nix`, `controllers.nix`, `fonts.nix`, `keyring.nix`, `nautilus.nix`, `opensnitch.nix`, `yubikey.nix`
+- `dictation.nix` — **not imported.** nerd-dictation + vosk, parked; the `fetchurl` points at
+  `master` so its hash will break on the next upstream commit. Pin a commit before wiring it in.
+
+## Session startup (no uwsm)
+
+The uwsm session is hidden from SDDM, so nothing activates `graphical-session.target` on its
+own. `hyprland.nix` defines `systemd.user.targets.hyprland-session`, and
+`~/.config/hypr/hyprland.conf` starts it:
+
+```
+exec-once = systemctl --user start hyprland-session.target
+```
+
+Any user service that is `wantedBy = [ "graphical-session.target" ]` (streamdeck-ui, hypridle)
+depends on that line. Don't also `exec-once` those programs directly — you get two copies.
 
 ## Conventions
 

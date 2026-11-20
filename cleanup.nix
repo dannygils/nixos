@@ -1,4 +1,5 @@
-{ pkgs, ... }:
+# cleanup.nix: Nix GC/optimise, auto-upgrade, disk health, temperature logging
+{ config, lib, pkgs, ... }:
 
 {
   # ---------------------------------------------------------------------------
@@ -16,7 +17,12 @@
   };
 
   # ---------------------------------------------------------------------------
-  # NixOS / flake auto-upgrade (runs at 04:00 with a random delay)
+  # NixOS auto-upgrade (runs at 04:00 with a random delay)
+  #
+  # Builds /etc/nixos/configuration.nix, which is a symlink to
+  # /home/dan/.config/nixos/configuration.nix -- no extra flags needed.
+  # `--upgrade` bumps the channel set with `nix-channel`; it never moves you
+  # to a new NixOS release. Do that by hand with `nix-channel --add`.
   # ---------------------------------------------------------------------------
   system.autoUpgrade = {
     enable = true;
@@ -54,24 +60,19 @@
   services.fwupd.enable = true;
 
   # ---------------------------------------------------------------------------
-  # NVIDIA persistence daemon (reduces GPU init latency)
-  # ---------------------------------------------------------------------------
-  hardware.nvidia.nvidiaPersistenced = true;
-
-  # ---------------------------------------------------------------------------
   # Periodic CPU / GPU temperature logger
-  # Logs to /var/log/temps.log every 5 minutes
+  # Output goes to the journal (size-capped above):
+  #   journalctl -u temp-log --since today
   # ---------------------------------------------------------------------------
   systemd.services.temp-log = {
     description = "CPU and GPU temperature snapshot";
     serviceConfig = {
       Type = "oneshot";
       ExecStart = pkgs.writeShellScript "temp-log" ''
-        echo "--- $(date --iso-8601=seconds) ---" >> /var/log/temps.log
-        ${pkgs.lm_sensors}/bin/sensors >> /var/log/temps.log
-        ${pkgs.linuxPackages.nvidia_x11}/bin/nvidia-smi \
+        ${pkgs.lm_sensors}/bin/sensors
+        ${lib.getBin config.hardware.nvidia.package}/bin/nvidia-smi \
           --query-gpu=temperature.gpu,power.draw,clocks.current.graphics \
-          --format=csv,noheader >> /var/log/temps.log
+          --format=csv,noheader
       '';
     };
   };
@@ -83,14 +84,6 @@
       OnBootSec = "2min";
       OnUnitActiveSec = "5min";
       Unit = "temp-log.service";
-      Persistent = true;
     };
   };
-
-  # ---------------------------------------------------------------------------
-  # Make NixOS-managed timers persistent so missed runs catch up on next boot
-  # ---------------------------------------------------------------------------
-  systemd.timers.nix-gc.timerConfig.Persistent = true;
-  systemd.timers.nix-optimise.timerConfig.Persistent = true;
-  systemd.timers.nixos-upgrade.timerConfig.Persistent = true;
 }

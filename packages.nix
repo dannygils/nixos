@@ -15,7 +15,6 @@ bat
 bmon
 bottles
 btop
-cron
 discord
 dig
 element-desktop
@@ -25,8 +24,6 @@ fastfetch
 ffmpeg
 ffmpegthumbnailer
 file
-gamemode
-gamescope
 gdal
 git
 gnome-text-editor
@@ -51,13 +48,14 @@ playerctl
 plezy
 protontricks
 protonup-ng
-(python312.withPackages (ps: with ps; [
-pip
-pillow
-pyserial
-    ]))
+# One python3 in the system path: a second (e.g. bare python313) collides on
+# bin/python3 and one silently wins. Use `uv` for project-local envs.
+(python313.withPackages (ps: with ps; [
+  pip
+  pillow
+  pyserial
+]))
 pwvucontrol
-python313
 ripgrep
 scanmem
 scrcpy
@@ -66,7 +64,6 @@ socat
 sqlcipher
 sqlite
 sshpass
-streamdeck-ui
 tigervnc
 typst
 unrar
@@ -76,34 +73,25 @@ vim
 vlc
 vscode
 warp-terminal
-wayland
 wget
-wine
+wineWow64Packages.stable   # pkgs.wine is 32-bit only
 winetricks
 xarchiver
-xbindkeys
-xdg-desktop-portal-gtk
-zoxide
 zoom-us
   ];
 ############################
 # OBS Studio
 ############################
+# No cudaSupport override: its only effect is autoAddDriverRunpath, which the
+# obs-studio derivation already applies, and the override forces a local
+# compile on every channel bump (including during the 04:00 auto-upgrade).
 programs.obs-studio = {
   enable = true;
-  package = pkgs.obs-studio.override { cudaSupport = true; };
+  enableVirtualCamera = true;   # sets up v4l2loopback; camera shows as "OBS Cam"
   plugins = with pkgs.obs-studio-plugins; [
     obs-pipewire-audio-capture
     obs-backgroundremoval
     wlrobs
   ];
 };
-
-boot.extraModulePackages = with config.boot.kernelPackages; [
-  v4l2loopback
-];
-boot.kernelModules = [ "v4l2loopback" ];
-boot.extraModprobeConfig = ''
-  options v4l2loopback devices=1 video_nr=1 card_label="OBS Virtual Camera" exclusive_caps=1
-'';
 }

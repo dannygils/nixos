@@ -3,6 +3,10 @@
 {
   services.printing.enable = true;
 
+  # Defaults to on whenever Avahi is enabled. The printer below is declared
+  # explicitly, so the discovery daemon has nothing to do.
+  services.printing.browsed.enable = false;
+
   hardware.printers = {
     ensurePrinters = [
       {

@@ -8,19 +8,14 @@
   users.users.dan = {
     isNormalUser = true;
     description  = "dan";
-    
-    # System groups
+
+    # All group membership for dan lives here, not scattered across modules.
     extraGroups  = [
       "networkmanager"  # Network management
       "wheel"           # Sudo access
-      "dialout"
-      "uucp"
-    ];
-    
-    # Per-user packages (optional)
-    packages =   [
-      # Optional: user-scoped packages; you can keep this empty.
-      # thunderbird
+      "dialout"         # Serial devices (/dev/ttyUSB*, /dev/neato)
+      "kvm"             # Android emulator / QEMU acceleration
+      "libvirtd"        # virt-manager / libvirt
     ];
   };
 }
